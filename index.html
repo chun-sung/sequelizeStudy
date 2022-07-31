@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+</head>
+<body>
+  
+
+<script>
+
+  //클래스를 이용해서 코딩을 해보자. 
+  // 1. 사용자로부터 아이디와 패스워드를 입력받자
+  class UserStorage {
+    //사용자를 확인하는 로직
+    loginUser(id, passwored, onSuccess, onError) {
+      setTimeout(() => {
+        if(
+          (id === 'ellie' && password === 'dream') ||
+          (id === 'coder' && password === 'academy')
+        ) {
+          onSuccess(id);
+        } else {
+          onError(new Error('not found'));
+        }
+      }, 2000);
+    }
+
+    // 확인된 사용자의 롤을 가져오는 로직
+    getRoles(user, onSuccess, onError) {
+      setTimeout(()=> {
+        if(user === 'ellie') {
+          onSuccess({name: 'ellie', role: 'admin'});
+        } else {
+          onError(new Error('no access'))
+        }
+      }, 1000);
+    }
+  }
+
+const userStorage = new UserStorage();
+const id = prompt('enter your id');
+const password = prompt('enter your password');
+
+userStorage.loginUser(
+  id, 
+  password, 
+  user => {
+    userStorage.getRoles(
+      user,
+      userWidthRole => {
+        console.log(user)
+        alert(`Hello ${userWidthRole.name}, you have a ${userWidthRole.role}`)
+      },
+      error => {
+        console.log(error)
+      }
+    );
+  },
+  error => {
+    console.log(error)
+  }
+);
+
+
+
+</script>
+</body>
+</html>

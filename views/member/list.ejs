@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>회원목록</title>
+  <style>
+    table * {
+      border: 1px solid grey;
+      text-align: center;
+    }
+    th { width: 150px }
+  </style>
+</head>
+<body>
+  <a href="/members/create">신규 회윈 등록 페이지</a>
+  <h1>회원 목록 페이지</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>고유번호</th>
+        <th>회원아이디</th>
+        <th>회원명</th>
+        <th>등록일자</th>
+        <th>수정일자</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% for(var i = 0; i < members.length; i++) { %>
+      <tr>
+        <td><a href="/member/modify/<%= members[i].id %>"><%= members[i].id%></a></td>
+        <td><%= members[i].userid%></td>
+        <td><%= members[i].username%></td>
+        <td><%= members[i].createdAt%></td>
+        <td><%= members[i].updatedAt%></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+</body>
+</html>

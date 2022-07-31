@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>회원 수정</title>
+</head>
+<body>
+  <h1>회원 수정 페이지</h1>
+  <form action="/members/modify" method="POST">
+    아이디: <input type="text" name="userid" value="<%= members.userid%>"><br>
+    이  름 : <input type="text" name="username" value="<%= members.username%>"><br>
+    <input type="submit" value="수정">
+    <a href="/members/delete?id=<%= members.id%>">삭제</a>
+    <input type="hidden" name="userIdx" value="<%= members.id%>" />
+  </form>
+  
+</body>
+</html>
